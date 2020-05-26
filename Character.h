@@ -1,15 +1,18 @@
 #pragma once
+#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 class Character
 {
 public:
-	int X;
-	int Y;
+	sf::Sprite body;
+	sf::Texture textr;
+	
 };
 
 class Player : public Character
 {
 public:
 	Player();
-	Player(int x, int y);
+	void 
 	void move();
 };

@@ -2,7 +2,7 @@
 class Menu
 {
 public:
-	void run();
+	void startGame();
 	void shutdown();
 	void showMenu();
 };

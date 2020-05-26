@@ -4,22 +4,20 @@
 #include <iostream>
 #include <stdio.h>
 #include "Character.h"
+#include "Matrix.h"
 
 class Game
 {
 public:
-	Player hero;
+	Player* hero;
     sf::RenderWindow* window;
     sf::Event evnt;
     sf::Clock clock;
     sf::Time elapsed;
-    
-    
-    std::map<std::string, sf::Texture*> map_textures;
 
-    std::vector<sf::Sprite*> sprites;
-
-    std::vector<sf::IntRect> v_intrect_sprite;
+    Game();
+    void loadAllData();
+    void run();
 
 };
 

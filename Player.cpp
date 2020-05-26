@@ -2,12 +2,7 @@
 
 Player::Player()
 {
-}
-
-Player::Player(int x, int y)
-{
-	X = x;
-	Y = y;
+	body.setPosition(100.0f, 100.0f);
 }
 
 void Player::move()
