@@ -4,10 +4,10 @@
 class Matrix
 {
 public: 
-	std::vector<std::vector<int> > vector_dwuwymiarowy;//deklaracja
+	std::vector<std::vector<char> > TwoDimensionalVector;
 	Matrix(int a, int b);
-	int get_vector(int a, int b);
-	void set_vector(int a, int b, int c);
+	int GetValue(int a, int b);
+	void SetValue(int a, int b, char c);
 
 };
 

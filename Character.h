@@ -1,18 +1,20 @@
 #pragma once
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+
+enum Direction {up, down, left, right};
+
 class Character
 {
 public:
-	sf::Sprite body;
-	sf::Texture textr;
-	
+	sf::Sprite Body;
+	sf::Texture Textr;
+	Direction Drt;
 };
 
 class Player : public Character
 {
 public:
 	Player();
-	void 
-	void move();
+	void Walk(Direction _drt, const sf::Time& _elapsed);
 };

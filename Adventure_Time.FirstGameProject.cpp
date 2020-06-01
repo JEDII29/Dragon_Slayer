@@ -10,10 +10,16 @@
 
 using namespace std;
 
-int main() {
+int main() 
+{
 
 	Game* game = new Game;
-	game->run();
+	while (game->Run())
+	{
+		game->Update();
+		game->Render();
+
+	}
 
 	return 0;
 }

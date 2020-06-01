@@ -1,8 +1,7 @@
 #pragma once
-#include <vector>
+#include "Matrix.h"
 class Map
 {
 public:
-	std::vector<int>xxx;
 };
 

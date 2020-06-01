@@ -2,8 +2,8 @@
 class Menu
 {
 public:
-	void startGame();
-	void shutdown();
-	void showMenu();
+	void StartGame();
+	void Shutdown();
+	void ShowMenu();
 };
 

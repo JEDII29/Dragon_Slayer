@@ -1,14 +1,14 @@
 #include "Menu.h"
 
-void Menu::startGame()
+void Menu::StartGame()
 {
 
 }
 
-void Menu::shutdown()
+void Menu::Shutdown()
 {
 }
 
-void Menu::showMenu()
+void Menu::ShowMenu()
 {
 }

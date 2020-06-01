@@ -2,23 +2,23 @@
 
 Matrix::Matrix(int a, int b)
 {
-    std::vector<int> tab;
+    std::vector<char> tab;
     for (int j = 0; j < b; j++)
         tab.push_back(0);//wype³niam zerami
 
 
     for (int i = 0; i < a; i++)
     {
-        vector_dwuwymiarowy.push_back(tab); //wype³niam vector vectorami
+        TwoDimensionalVector.push_back(tab); //wype³niam vector vectorami
     }
 }
 
-int Matrix::get_vector(int a, int b)
+int Matrix::GetValue(int a, int b)
 {
-    return vector_dwuwymiarowy[a][b];
+    return TwoDimensionalVector[a][b];
 }
 
-void Matrix::set_vector(int a, int b, int c)
+void Matrix::SetValue(int a, int b, char c)
 {
-    vector_dwuwymiarowy[a][b] = c;
+    TwoDimensionalVector[a][b] = c;
 }

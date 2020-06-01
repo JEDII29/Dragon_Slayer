@@ -2,34 +2,62 @@
 
 Game::Game()
 {
-	window = new sf::RenderWindow(sf::VideoMode(1000, 600), "Dragon Slayer");
-	hero = new Player;
+	Window = new sf::RenderWindow(sf::VideoMode(1000, 600), "Dragon Slayer");
+	Hero = new Player;
 }
 
-void Game::loadAllData()
+void Game::LoadTextures()
 {
 
 }
 
-void Game::run()
+
+void Game::LoadAllData()
 {
-	while (window->isOpen())
+	LoadTextures();
+}
+
+bool Game::Run()
+{
+	return Window->isOpen();
+}
+
+void Game::Update()
+{
+	Window->setFramerateLimit(30);
+	Elapsed = Clk.restart();
+
+	while (Window->pollEvent(Evnt))
 	{
-		while (window->pollEvent(evnt))
+		// "close requested" event: we close the window
+		if (Evnt.type == sf::Event::Closed)
 		{
-			// "close requested" event: we close the window
-			if (evnt.type == sf::Event::Closed)
-			{
-				window->close();
-			}
-
-			// clear the window with black color
-			window->clear(sf::Color::Black);
-
-			window->draw(hero->body);
-
-			// end the current frame
-			window->display();
+			Window->close();
 		}
 	}
+
+	 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
+		Hero->Walk(right, Elapsed);
+
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
+		Hero->Walk(left, Elapsed);
+
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
+		Hero->Walk(down, Elapsed);
+
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
+		Hero->Walk(up, Elapsed);
+
+
+}
+
+void Game::Render()
+{
+	Window->clear(sf::Color::Black);
+
+
+	Window->draw(Hero->Body);
+
+	// end the current frame
+	Window->display();
 }
