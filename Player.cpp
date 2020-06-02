@@ -3,8 +3,9 @@
 
 Player::Player()
 {
-	Textr.loadFromFile("guy.png");
+	Textr.loadFromFile("HeroTexture.png");
 	Body.setTexture(Textr);
+	Body.setScale(3.0f, 3.0f);
 	Body.setPosition(200.0f, 300.0f);
 	Drt = down;
 
@@ -17,7 +18,7 @@ void Player::Walk(Direction _drt , const sf::Time& _elapsed)
 	case down:
 	{
 		if (_drt == Drt)
-			Body.move(0.0f , 10.0f * _elapsed.asSeconds() * 10);
+			Body.move(0.0f , 20.0f * _elapsed.asSeconds() * 10);
 		else
 			Drt = _drt;
 		break;
@@ -25,7 +26,7 @@ void Player::Walk(Direction _drt , const sf::Time& _elapsed)
 	case up:
 	{
 		if (_drt == Drt)
-			Body.move(0.0f , 10.0f * _elapsed.asSeconds() * -10);
+			Body.move(0.0f , 20.0f * _elapsed.asSeconds() * -10);
 		else
 			Drt = _drt;
 		break;
@@ -33,7 +34,7 @@ void Player::Walk(Direction _drt , const sf::Time& _elapsed)
 	case right:
 	{
 		if (_drt == Drt)
-			Body.move(10.0f * _elapsed.asSeconds() * 10 , 0.0f);
+			Body.move(20.0f * _elapsed.asSeconds() * 10 , 0.0f);
 		else
 			Drt = _drt;
 		break;
@@ -41,7 +42,7 @@ void Player::Walk(Direction _drt , const sf::Time& _elapsed)
 	case left:
 	{
 		if (_drt == Drt)
-			Body.move(10.0f * _elapsed.asSeconds() * -10 , 0.0f);
+			Body.move(20.0f * _elapsed.asSeconds() * -10 , 0.0f);
 		else
 			Drt = _drt;
 		break;

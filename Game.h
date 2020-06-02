@@ -4,18 +4,22 @@
 #include <iostream>
 #include <stdio.h>
 #include <map>
+#include <fstream>
 #include "Character.h"
-#include "Matrix.h"
+#include "Map.h"
 
 class Game
 {
 public:
 	Player* Hero;
     sf::RenderWindow* Window;
+    Map* CurrentLocation;
     sf::Event Evnt;
     sf::Clock Clk;
     sf::Time Elapsed;
-    std::map<char , sf::Texture> MapTextures;
+    std::map<char , sf::Texture*> TexturesMap;
+    
+    
 
     Game();
     void LoadTextures();
@@ -23,6 +27,5 @@ public:
     bool Run();
     void Update();
     void Render();
-
 };
 
