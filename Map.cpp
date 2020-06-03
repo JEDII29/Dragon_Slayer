@@ -48,18 +48,3 @@ void Map::CreateMap(std::map<char, sf::Texture*> textures)
 	}
 }
 
-//for (auto& [name, texture] : map_textures) {
-//	sf::Sprite* s = new sf::Sprite;
-//	if (name == "asky") {
-//		s->setTexture(*texture);
-//		s->setScale(2.0f, 2.0f);
-//		s->setTextureRect(sf::IntRect(0, 0, 800, 600));
-//		this->sprites.emplace_back(s);
-//	}
-//	if (name == "clouds") {
-//		s->setTexture(*texture);
-//		s->setScale(1.0f, 1.0f);
-//		s->setTextureRect(sf::IntRect(0, 0, 800, 300));
-//		s->setPosition(0.0f, 200.0f);
-//		this->sprites.emplace_back(s);
-//	}

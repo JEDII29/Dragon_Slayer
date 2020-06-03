@@ -17,8 +17,11 @@ class Player : public Character
 {
 public:
 	PlayerAnimation* Animation;
+	sf::Vector2i Movement;
+	sf::Vector2f StartPosition;
 	Player();
-	void Walk(Direction _drt, const sf::Time& _elapsed);
+	void Update(const float&);
+	void Walk(Direction _drt, const float& _elapsed);
 private:
 	float Speed;
 };

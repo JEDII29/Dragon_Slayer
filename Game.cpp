@@ -34,6 +34,7 @@ void Game::Update()
 {
 	Window->setFramerateLimit(60);
 	Elapsed = Clk.restart();
+	float elapsed = Elapsed.asSeconds();
 	while (Window->pollEvent(Evnt))
 	{
 		// "close requested" event: we close the window
@@ -43,19 +44,10 @@ void Game::Update()
 		}
 	}
 
-	 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
-		Hero->Walk(right, Elapsed);
+	Hero->Update(elapsed);
 
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
-		Hero->Walk(left, Elapsed);
 
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
-		Hero->Walk(down, Elapsed);
-
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
-		Hero->Walk(up, Elapsed);
-
-	 Hero->Animation->Update(Hero->Drt, Elapsed.asSeconds());
+	 Hero->Animation->Update(Hero->Drt, elapsed);
 	 Hero->Body.setTextureRect(Hero->Animation->UvRect);
 
 
