@@ -32,9 +32,8 @@ bool Game::Run()
 
 void Game::Update()
 {
-	Window->setFramerateLimit(30);
+	Window->setFramerateLimit(60);
 	Elapsed = Clk.restart();
-
 	while (Window->pollEvent(Evnt))
 	{
 		// "close requested" event: we close the window
@@ -55,6 +54,9 @@ void Game::Update()
 
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
 		Hero->Walk(up, Elapsed);
+
+	 Hero->Animation->Update(Hero->Drt, Elapsed.asSeconds());
+	 Hero->Body.setTextureRect(Hero->Animation->UvRect);
 
 
 }
