@@ -46,13 +46,20 @@ void Game::Update()
 	}
 
 	Hero->Update(elapsed);
-
-
-	 Hero->Animation->Update(Hero->Drt, elapsed, Hero->IsMoving);
-	 Hero->Body.setTextureRect(Hero->Animation->UvRect);
-
+	Hero->Animation->Update(Hero->Drt, elapsed, Hero->IsMoving);
+	Hero->Body.setTextureRect(Hero->Animation->UvRect);
+	
+	for (int i = Hero->PositionIndeks.x-1; i <= Hero->PositionIndeks.x + 1; i++)
+	{
+		for (int j = Hero->PositionIndeks.y - 1; j <= Hero->PositionIndeks.y + 1; j++)
+		{
+			if (CurrentLocation->Location[j][i].IsWall)
+				Hero->Stop(Hero->CheckCollision(CurrentLocation->Location[j][i].getPosition()));
+		}
+	}
 
 }
+
 
 void Game::Render()
 {
@@ -60,11 +67,11 @@ void Game::Render()
 	Window->clear(sf::Color::Black);
 	Window->setView(*Screen);
 
-	for (int i = 0; i < CurrentLocation->SpritesMap.size(); i++)
+	for (int i = 0; i < CurrentLocation->Location.size(); i++)
 	{
-		for (int j = 0; j < CurrentLocation->SpritesMap[i].size(); j++)
+		for (int j = 0; j < CurrentLocation->Location[i].size(); j++)
 		{
-			Window->draw(CurrentLocation->SpritesMap[i][j]);
+			Window->draw(CurrentLocation->Location[i][j]);
 		}
 	}
 

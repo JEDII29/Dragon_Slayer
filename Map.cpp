@@ -1,5 +1,6 @@
 #include "Map.h"
 
+
 Map::Map(std::string location, std::map<char, sf::Texture*> textures)
 {
 	LoadMap(location);
@@ -30,8 +31,8 @@ void Map::LoadMap(std::string location)
 
 void Map::CreateMap(std::map<char, sf::Texture*> textures)
 {
-	std::vector<sf::Sprite> spritesLine;
-	sf::Sprite chunk;
+	std::vector<Tile> TilesLine;
+	Tile chunk;
 	
 	
 	for (int i = 0; i < CharMap.size(); i++)
@@ -41,10 +42,14 @@ void Map::CreateMap(std::map<char, sf::Texture*> textures)
 			chunk.setTexture(*textures[CharMap[i][j]]);
 			chunk.setScale(3.0f, 3.0f);
 			chunk.setPosition(float(j * 60), float(i * 60));
-			spritesLine.push_back(chunk);
+			if (CharMap[i][j] == 'b')
+				chunk.IsWall = true;
+			else
+				chunk.IsWall = false;
+			TilesLine.push_back(chunk);
 		}
-		SpritesMap.push_back(spritesLine);
-		spritesLine.clear();
+		Location.push_back(TilesLine);
+		TilesLine.clear();
 	}
 }
 

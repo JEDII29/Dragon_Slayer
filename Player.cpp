@@ -15,7 +15,8 @@ Player::Player()
 	Movement.x = 0.0f;
 	Movement.y = 0.0f;
 	IsMoving = false;
-
+	PositionIndeks.x = Body.getPosition().x / 60;
+	PositionIndeks.y = Body.getPosition().y / 60;
 }
 
 void Player::Update(const float& elapsed)
@@ -70,6 +71,8 @@ void Player::Walk(Direction _drt , const float& _elapsed)
 			Movement.x = 0;
 			Movement.y = 0;
 			Body.setPosition(round(Body.getPosition().x/10)*10, round(Body.getPosition().y/10) * 10);
+			PositionIndeks.x = Body.getPosition().x / 60;
+			PositionIndeks.y = Body.getPosition().y / 60;
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) ||
 				sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
 			{
@@ -86,4 +89,27 @@ void Player::Walk(Direction _drt , const float& _elapsed)
 		Movement.y = 0.0f;
 	}
 
+}
+
+bool Player::CheckCollision(const sf::Vector2f & objectPosition)
+{
+	float deltaX = Body.getPosition().x - objectPosition.x;
+	float deltaY = Body.getPosition().y - objectPosition.y;
+	float intersectX = abs(deltaX) - 60.0f;
+	float intersectY = abs(deltaY) - 60.0f;
+
+	if (intersectX < 0.0f && intersectY < 0.0f)
+		return true;
+	else
+		return false;
+}
+
+void Player::Stop(bool isCollision)
+{
+	if (isCollision)
+	{
+		Movement.x = 0.0f;
+		Movement.y = 0.0f;
+		Body.setPosition(round(Body.getPosition().x / 10) * 10, round(Body.getPosition().y / 10) * 10);
+	}
 }

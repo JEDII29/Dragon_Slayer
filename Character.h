@@ -16,13 +16,15 @@ public:
 class Player : public Character
 {
 public:
-	bool IsMoving;
 	PlayerAnimation* Animation;
+	sf::Vector2i PositionIndeks;
+	bool IsMoving;
 	sf::Vector2i Movement;
-	sf::Vector2f StartPosition;
 	Player();
 	void Update(const float&);
 	void Walk(Direction _drt, const float& _elapsed);
+	bool CheckCollision(const sf::Vector2f& objectPosition);
+	void Stop(bool isCollision);
 private:
 	float Speed;
 };
