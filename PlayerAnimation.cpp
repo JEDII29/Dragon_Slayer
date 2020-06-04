@@ -11,8 +11,10 @@ PlayerAnimation::PlayerAnimation(sf::Texture* texture, sf::Vector2u imageCount, 
 	UvRect.height = texture->getSize().y / float(imageCount.y);
 }
 
-void PlayerAnimation::Update(int row, float deltaTime)
+void PlayerAnimation::Update(int row, float deltaTime, bool isMoving)
 {
+	if (isMoving)
+		row += 4;
 	CurrentImage.y = row;
 	TotalTime += deltaTime;
 

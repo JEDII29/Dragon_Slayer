@@ -47,7 +47,7 @@ void Game::Update()
 	Hero->Update(elapsed);
 
 
-	 Hero->Animation->Update(Hero->Drt, elapsed);
+	 Hero->Animation->Update(Hero->Drt, elapsed, Hero->IsMoving);
 	 Hero->Body.setTextureRect(Hero->Animation->UvRect);
 
 

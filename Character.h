@@ -16,6 +16,7 @@ public:
 class Player : public Character
 {
 public:
+	bool IsMoving;
 	PlayerAnimation* Animation;
 	sf::Vector2i Movement;
 	sf::Vector2f StartPosition;
