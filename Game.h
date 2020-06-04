@@ -14,6 +14,7 @@ public:
 	Player* Hero;
     sf::RenderWindow* Window;
     Map* CurrentLocation;
+    sf::View* Screen;
     sf::Event Evnt;
     sf::Clock Clk;
     sf::Time Elapsed;

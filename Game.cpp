@@ -6,6 +6,7 @@ Game::Game()
 	Hero = new Player;
 	LoadAllData();
 	CurrentLocation = new Map("testingLocation.txt", TexturesMap);
+	Screen = new sf::View(sf::Vector2f(0.0f,0.0f), sf::Vector2f(1200.0f, 720.0f));
 }
 
 void Game::LoadTextures()
@@ -55,7 +56,9 @@ void Game::Update()
 
 void Game::Render()
 {
+	Screen->setCenter(Hero->Body.getPosition());
 	Window->clear(sf::Color::Black);
+	Window->setView(*Screen);
 
 	for (int i = 0; i < CurrentLocation->SpritesMap.size(); i++)
 	{
