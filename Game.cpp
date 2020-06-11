@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Battle.h"
 
 Game::Game()
 {
@@ -49,6 +50,7 @@ void Game::Update()
 	Hero->Animation->Update(Hero->Drt, elapsed, Hero->IsMoving);
 	Hero->Body.setTextureRect(Hero->Animation->UvRect);
 	
+
 	for (int i = Hero->PositionIndeks.x-1; i <= Hero->PositionIndeks.x + 1; i++)
 	{
 		for (int j = Hero->PositionIndeks.y - 1; j <= Hero->PositionIndeks.y + 1; j++)
