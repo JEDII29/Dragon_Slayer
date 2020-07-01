@@ -12,16 +12,16 @@ class Character
 public:
 	sf::Sprite Body;
 	sf::Texture* Textr;
-	Direction Drt;
+	int LifePoints;
+	int StaminaPoints;
 };
 
 class Player : public Character
 {
 public:
-	Weapon HoldingWeapon;
-	int LifePoints;
-	int StaminaPoints;
-	std::vector<PhysicalAttack> MoveList;
+	Direction Drt;
+	Weapon* HoldingWeapon;
+	std::vector<PhysicalAttack*> MoveList;
 
 	PlayerAnimation* Animation;
 	sf::Vector2i PositionIndeks;
@@ -36,7 +36,10 @@ private:
 	float Speed;
 };
 
-class Enemy
+class Enemy : public Character
 {
-
+public:
+	std::vector<PhysicalAttack*> MoveList;
+	Weapon* HoldingWeapon;
+	Enemy();
 };

@@ -13,5 +13,6 @@ class Weapon : public Item
 {
 public:
 	int Damage;
+	Weapon(int damage);
 };
 

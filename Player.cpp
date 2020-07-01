@@ -10,13 +10,17 @@ Player::Player()
 	Body.setTexture(*Textr);
 	Body.setScale(3.0f, 3.0f);
 	Body.setPosition(180.0f, 300.0f);
-	Drt = down;
 	Speed = 18;
 	Movement.x = 0.0f;
 	Movement.y = 0.0f;
 	IsMoving = false;
 	PositionIndeks.x = Body.getPosition().x / 60;
 	PositionIndeks.y = Body.getPosition().y / 60;
+	Drt = down;
+	MoveList.push_back(new PhysicalAttack("cios", 10));
+	HoldingWeapon = new Weapon(5);
+	LifePoints = 100;
+	StaminaPoints = 100;
 }
 
 void Player::Update(const float& elapsed)
@@ -110,6 +114,6 @@ void Player::Stop(bool isCollision)
 	{
 		Movement.x = 0.0f;
 		Movement.y = 0.0f;
-		Body.setPosition(round(Body.getPosition().x / 10) * 10, round(Body.getPosition().y / 10) * 10);
+		Body.setPosition(PositionIndeks.x * 60, PositionIndeks.y * 60);
 	}
 }

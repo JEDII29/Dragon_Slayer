@@ -19,6 +19,7 @@ public:
     sf::Clock Clk;
     sf::Time Elapsed;
     std::map<char , sf::Texture*> TexturesMap;
+    std::vector<Enemy*> EnemysList;
     
     
 
@@ -28,5 +29,6 @@ public:
     bool Run();
     void Update();
     void Render();
+    void PollEvnt();
 };
 

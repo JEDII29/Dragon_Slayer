@@ -8,6 +8,7 @@ int main()
 	Game* game = new Game;
 	while (game->Run())
 	{
+		game->PollEvnt();
 		game->Update();
 		game->Render();
 
