@@ -11,7 +11,9 @@ class Character
 {
 public:
 	sf::Sprite Body;
+	sf::Sprite FightBody;
 	sf::Texture* Textr;
+	sf::Texture* FightTextr;
 	int LifePoints;
 	int StaminaPoints;
 };
@@ -20,6 +22,7 @@ class Player : public Character
 {
 public:
 	Direction Drt;
+	bool Checked;
 	Weapon* HoldingWeapon;
 	std::vector<PhysicalAttack*> MoveList;
 
@@ -31,7 +34,6 @@ public:
 	void Update(const float&);
 	void Walk(Direction _drt, const float& _elapsed);
 	void Stop(bool isCollision);
-	bool CheckCollision(const sf::Vector2f& objectPosition);
 private:
 	float Speed;
 };

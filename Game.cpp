@@ -7,7 +7,7 @@ Game::Game()
 	Hero = new Player;
 	EnemysList.push_back(new Enemy());
 	LoadAllData();
-	CurrentLocation = new Map("testingLocation.txt", TexturesMap);
+	CurrentLocation = new Map("testingLocation.txt", TexturesMap, Grass);
 	Screen = new sf::View(sf::Vector2f(0.0f,0.0f), sf::Vector2f(1200.0f, 720.0f));
 }
 
@@ -19,6 +19,13 @@ void Game::LoadTextures()
 	txtr = new sf::Texture;
 	txtr->loadFromFile("WallRock.png");
 	TexturesMap['b'] = txtr;
+	txtr = new sf::Texture;
+	txtr->loadFromFile("TallGrassUp.png");
+	TexturesMap['g'] = txtr;
+	txtr = new sf::Texture;
+	txtr->loadFromFile("TallGrassDown.png");
+	TexturesMap['h'] = txtr;
+	
 
 }
 
@@ -40,8 +47,7 @@ void Game::Update()
 	float elapsed = Elapsed.asSeconds();
 
 	Hero->Update(elapsed);
-	Hero->Animation->Update(Hero->Drt, elapsed, Hero->IsMoving);
-	Hero->Body.setTextureRect(Hero->Animation->UvRect);
+
 	
 
 	for (int i = Hero->PositionIndeks.x-1; i <= Hero->PositionIndeks.x + 1; i++)
@@ -49,23 +55,30 @@ void Game::Update()
 		for (int j = Hero->PositionIndeks.y - 1; j <= Hero->PositionIndeks.y + 1; j++)
 		{
 			if (CurrentLocation->Location[j][i].IsWall)
-				Hero->Stop(Hero->CheckCollision(CurrentLocation->Location[j][i].getPosition()));
+				Hero->Stop(Collisions.CheckHeroCollisionWithWalls(Hero, CurrentLocation->Location[j][i]));
 		}
 	}
-	if (Hero->Body.getPosition().x == 240 && Hero->Body.getPosition().y ==360)
+	if (CurrentLocation->Location[Hero->PositionIndeks.y][Hero->PositionIndeks.x].CanSpawn
+		&& Hero->Checked == false)
 	{
-		Battle* Fight = new Battle(Hero, EnemysList[0]);
-		while (Fight != NULL)
+		if (Collisions.CheckHeroCollisionWithGrass(Hero, CurrentLocation->
+			Location[Hero->PositionIndeks.y][Hero->PositionIndeks.x]))
 		{
-			Fight->Update(Window, Evnt);
-			Fight->Render(Window);
-			if (Fight->Opponent->LifePoints <= 0)
+			Battle* Fight = new Battle(Hero);
+			while (Fight != NULL)
 			{
-				break;
+				Fight->Run(Window, Evnt);		
+				if (Fight->Opponent->LifePoints <= 0)
+				{
+					break;
+				}
 			}
+			delete Fight;
 		}
-		delete Fight;
 	}
+
+
+
 
 
 
@@ -92,6 +105,11 @@ void Game::Render()
 	}
 
 	Window->draw(Hero->Body);
+
+	for (int i = 0; i < Grass.size(); i++)
+	{
+		Window->draw(*Grass[i]);
+	}
 
 	// end the current frame
 	Window->display();

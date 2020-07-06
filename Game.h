@@ -7,6 +7,7 @@
 #include <fstream>
 #include "Character.h"
 #include "Map.h"
+#include "CollisionEngine.h"
 
 class Game
 {
@@ -20,8 +21,8 @@ public:
     sf::Time Elapsed;
     std::map<char , sf::Texture*> TexturesMap;
     std::vector<Enemy*> EnemysList;
-    
-    
+    std::vector<sf::Sprite*> Grass;
+    CollisionEngine Collisions;
 
     Game();
     void LoadTextures();

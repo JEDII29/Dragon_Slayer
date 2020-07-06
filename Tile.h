@@ -4,5 +4,6 @@ class Tile: public sf::Sprite
 {
 public:
 	bool IsWall;
+	bool CanSpawn;
 };
 

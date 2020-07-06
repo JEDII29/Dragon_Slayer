@@ -1,10 +1,10 @@
 #include "Map.h"
 
 
-Map::Map(std::string location, std::map<char, sf::Texture*> textures)
+Map::Map(std::string location, std::map<char, sf::Texture*> textures, std::vector<sf::Sprite*>& _grass)
 {
 	LoadMap(location);
-	CreateMap(textures);
+	CreateMap(textures, _grass);
 }
 
 void Map::LoadMap(std::string location)
@@ -29,7 +29,7 @@ void Map::LoadMap(std::string location)
 }
 
 
-void Map::CreateMap(std::map<char, sf::Texture*> textures)
+void Map::CreateMap(std::map<char, sf::Texture*> textures, std::vector<sf::Sprite*>& _grass)
 {
 	std::vector<Tile> TilesLine;
 	Tile chunk;
@@ -43,9 +43,26 @@ void Map::CreateMap(std::map<char, sf::Texture*> textures)
 			chunk.setScale(3.0f, 3.0f);
 			chunk.setPosition(float(j * 60), float(i * 60));
 			if (CharMap[i][j] == 'b')
+			{
 				chunk.IsWall = true;
-			else
+				chunk.CanSpawn = false;
+			}
+
+			else if (CharMap[i][j] == 'g')
+			{
 				chunk.IsWall = false;
+				chunk.CanSpawn = true;
+				sf::Sprite* gr = new sf::Sprite;
+				gr->setPosition(chunk.getPosition());
+				gr->setTexture(*textures['h']);
+				gr->setScale(3.0f, 3.0f);
+				_grass.push_back(gr);
+			}
+			else
+			{
+				chunk.IsWall = false;
+				chunk.CanSpawn = false;
+			}	
 			TilesLine.push_back(chunk);
 		}
 		Location.push_back(TilesLine);
