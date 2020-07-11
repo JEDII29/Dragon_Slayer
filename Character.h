@@ -16,13 +16,17 @@ public:
 	sf::Texture* FightTextr;
 	int LifePoints;
 	int StaminaPoints;
+protected:
+	int Lvl;
 };
 
 class Player : public Character
 {
 public:
+	int Maxhealth, MaxStamina;
 	Direction Drt;
 	bool Checked;
+	int Exp;
 	Weapon* HoldingWeapon;
 	std::vector<PhysicalAttack*> MoveList;
 
@@ -34,7 +38,10 @@ public:
 	void Update(const float&);
 	void Walk(Direction _drt, const float& _elapsed);
 	void Stop(bool isCollision);
+	void RaiseLvl();
+	int GetLvl() { return Lvl; };
 private:
+
 	float Speed;
 };
 
@@ -44,4 +51,5 @@ public:
 	std::vector<PhysicalAttack*> MoveList;
 	Weapon* HoldingWeapon;
 	Enemy();
+	Enemy(int difficulty);
 };

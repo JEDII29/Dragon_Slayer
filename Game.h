@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <stdio.h>
 #include <map>
@@ -8,28 +9,39 @@
 #include "Character.h"
 #include "Map.h"
 #include "CollisionEngine.h"
+#include "StatsBadge.h"
 
 class Game
 {
 public:
-	Player* Hero;
+    Player* Hero;
     sf::RenderWindow* Window;
-    Map* CurrentLocation;
+    sf::Text TimerDisplay;
     sf::View* Screen;
-    sf::Event Evnt;
-    sf::Clock Clk;
-    sf::Time Elapsed;
-    std::map<char , sf::Texture*> TexturesMap;
-    std::vector<Enemy*> EnemysList;
-    std::vector<sf::Sprite*> Grass;
-    CollisionEngine Collisions;
+    float Timer;
 
     Game();
-    void LoadTextures();
-    void LoadAllData();
     bool Run();
     void Update();
     void Render();
     void PollEvnt();
+
+private:
+    StatsBadge PlayerStats;
+    CollisionEngine Collisions;
+    std::vector<Enemy*> EnemysList;
+    std::vector<sf::Sprite*> Grass;
+    std::map<char, sf::Texture*> TexturesMap;
+    sf::Event Evnt;
+    sf::Clock Clk;
+    sf::Time Elapsed;
+    Map* CurrentLocation;
+    sf::Music MainTheme;
+    sf::Sound ClickSound;
+    sf::SoundBuffer ClickBuffer;
+    sf::Font TimerFont;
+
+    void LoadTextures();
+    void LoadAllData();
 };
 

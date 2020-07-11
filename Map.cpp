@@ -48,13 +48,14 @@ void Map::CreateMap(std::map<char, sf::Texture*> textures, std::vector<sf::Sprit
 				chunk.CanSpawn = false;
 			}
 
-			else if (CharMap[i][j] == 'g')
+			else if (CharMap[i][j] >= 'g' && CharMap[i][j] <= 'k')
 			{
 				chunk.IsWall = false;
 				chunk.CanSpawn = true;
+				chunk.Difficulty = CharMap[i][j]-'g'+1;
 				sf::Sprite* gr = new sf::Sprite;
 				gr->setPosition(chunk.getPosition());
-				gr->setTexture(*textures['h']);
+				gr->setTexture(*textures['l']);
 				gr->setScale(3.0f, 3.0f);
 				_grass.push_back(gr);
 			}

@@ -66,6 +66,15 @@
     <ClCompile Include="Table.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LaunchedAttack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StatsBadge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EndScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -99,6 +108,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LaunchedAttack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StatsBadge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EndScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,12 +6,13 @@ class Table
 {
 public:
 	Table();
-	Table(float width, float height, std::vector<PhysicalAttack*> attackList);
+	Table(std::vector<PhysicalAttack*> attackList);
 	void Draw(sf::RenderWindow* window);
-	void SetItemsPositions();
+	void Draw5Items(sf::RenderWindow* window);
 	void MoveUp();
 	void MoveDown();
 	int GetSelectedOption(){ return SelectedOption; };
+	void SelectExit();
 	bool ChoosingAttack;
 private:
 	int SelectedOption;

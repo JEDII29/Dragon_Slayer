@@ -16,7 +16,7 @@ bool CollisionEngine::CheckHeroCollisionWithWalls(Player* hero, Tile wall)
 bool CollisionEngine::CheckHeroCollisionWithGrass(Player* hero, Tile grass)
 {
 	hero->Checked = true;
-	if (rand() % 1 == 0)
+	if (rand() % 4 == 0)
 	{
 		return true;
 	}

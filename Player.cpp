@@ -22,11 +22,17 @@ Player::Player()
 	PositionIndeks.x = Body.getPosition().x / 60;
 	PositionIndeks.y = Body.getPosition().y / 60;
 	Drt = down;
-	MoveList.push_back(new PhysicalAttack("cios", 10));
+
+	MoveList.push_back(new PhysicalAttack("poke", 2, 0));
+	MoveList.push_back(new PhysicalAttack("punch", 5, 5));
+	MoveList.push_back(new PhysicalAttack("slash", 15, 20));
 	HoldingWeapon = new Weapon(5);
 	LifePoints = 100;
 	StaminaPoints = 100;
 	Checked = false;
+	Maxhealth = 100;
+	MaxStamina = 100;
+	Lvl = 1;
 }
 
 void Player::Update(const float& elapsed)
@@ -129,7 +135,8 @@ void Player::Walk(Direction _drt , const float& _elapsed)
 			PositionIndeks.x = Body.getPosition().x / 60;
 			PositionIndeks.y = Body.getPosition().y / 60;
 			Checked = false;
-
+			if (LifePoints < Maxhealth)
+				LifePoints++;
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) ||
 				sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
@@ -158,5 +165,18 @@ void Player::Stop(bool isCollision)
 		Movement.x = 0.0f;
 		Movement.y = 0.0f;
 		Body.setPosition(PositionIndeks.x * 60, PositionIndeks.y * 60);
+	}
+}
+
+void Player::RaiseLvl()
+{
+	if (Exp >= Lvl * 10)
+	{
+		Exp -= Lvl * 10;
+		Lvl++;
+		Maxhealth = Maxhealth + 10 + Lvl * 2;
+		LifePoints = Maxhealth;
+		MaxStamina = MaxStamina + 5 + Lvl * 3;
+		StaminaPoints = MaxStamina;
 	}
 }

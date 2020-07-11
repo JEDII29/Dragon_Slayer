@@ -1,12 +1,21 @@
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbb
-baaaaaaaaaaaaaaaaaaaaaaaaaaab
-bbbbbbbbaaaaaaaaaaaaaabbbaaab
-baaaaaabaaaaaaaaaaaaaabbbaaab
-baaaaaabaaaagggggaaaaaaabaaabbbbbbbb
-baaaaaabaaaagggggaaaaaaabaaaagggggbb
-baaaaaabbbbbgggggaaaaaaabbbbbbgggggb
-baaaaaabaaaaaaaaaaaaaaaaaaaaaagggggb
-baaaaaabaaaaaaaaaaaaaaaaaaaabbbbbbbb
-baaaaaaaaaaaaaaaabbbbbaaaaaab
-baaaaaaaaaaaaaaaaaaaaaaaaaaab
-bbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+bbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaabbbaaab
+baaaaaabaaaaaaaaaaaaaaaaaaaaaaaaabbbaaab
+baaaaaabaaaaaaaaaaaaaaagggggaaaaaaabaaabbbbbbbb
+baaaaaabaaaaaaaaaaaaaaagggggaaaaaaabaaaagggggbb
+baaaaaabbbaaaaaaaaaaabbgggggaaaaaaabbbbbbgggggb
+baaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaagggggb
+baaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbb
+baaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbaaaaaab
+baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbb
+baaaaaabaaaaaaaaaaaaaaaaaaaaaabbbbbb
+bbbbbbbbbbbbbbaaaaaaaabbbbbbbbb
+             baaaaaaaab
+             baaaaaaaab               bbbbbbbbbbbbbbbbbbb
+             baaaaaaaab               biiiiaaaaaaaaaakkkb
+             baaabbaaab               biiiaaaaaaaaaaakkkb
+bbbbbbbbbbbbbbaaabbaaabbbbbbbbbbbbbbbbbiiaaaaaaaaaaaakkkb
+bhhhhhaaaaaaaaaaabbaaaaaaaaaaaaaaaaaaabbbbbiiiiibbbbbbbbb
+bhhhhhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaiiiibbb
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
